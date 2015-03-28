@@ -48,9 +48,15 @@ static NSString *const kBaseAPIURL = @"https://api.github.com";
         GET:requestString
         parameters:nil
         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            if (!success) {
+                return;
+            }
             success(responseObject);
         }
         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            if (!failure) {
+                return;
+            }
             failure(error);
         }];
     
@@ -66,9 +72,15 @@ static NSString *const kBaseAPIURL = @"https://api.github.com";
         GET:requestString
         parameters:nil
         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            if (!success) {
+                return;
+            }
             success(responseObject);
         }
         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            if (!failure) {
+                return;
+            }
             failure(error);
         }];
 }
@@ -81,11 +93,17 @@ static NSString *const kBaseAPIURL = @"https://api.github.com";
 {
     [self getInfoForUser:userName
         success:^(NSDictionary *userInfo) {
+            if (!success) {
+                return;
+            }
             NSString *avatarURLString = userInfo[@"avatar_url"];
             NSURL *avatarURL = [NSURL URLWithString:avatarURLString];
             success(avatarURL);
         }
         failure:^(NSError *error) {
+            if (!failure) {
+                return;
+            }
             failure(error);
         }];
 }
@@ -100,9 +118,15 @@ static NSString *const kBaseAPIURL = @"https://api.github.com";
         GET:requestString
         parameters:nil
         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            if (!success) {
+                return;
+            }
             success(responseObject);
         }
         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            if (!failure) {
+                return;
+            }
             failure(error);
         }];
 }
@@ -113,9 +137,15 @@ static NSString *const kBaseAPIURL = @"https://api.github.com";
 {
     [self getCommitsForRepositoryWithFullName:repositoryFullName
         success:^(NSArray *commits) {
+            if (!success) {
+                return;
+            }
             success(@(commits.count));
         }
         failure:^(NSError *error) {
+            if (!failure) {
+                return;
+            }
             failure(error);
         }];
 }

@@ -5,7 +5,6 @@
 static NSString *const reuseId = @"ReuseId";
 
 @interface RepositoriesListVC ()
-@property (strong, nonatomic) NSArray *repositories;
 @end
 
 

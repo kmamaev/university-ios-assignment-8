@@ -83,22 +83,25 @@ static NSString *const kRepositoryCommitsCount = @"commits_count";
             NSArray *repositories = [wself generateRepositoriesArrayFromDictionaries:dictionaries];
             [wself addCommitsCountToRepositories:(NSArray *)repositories
                 success:^(NSArray *repositories) {
+                    typeof(wself) __strong sself = wself;
                     RepositoriesListVC *repositoriesListVC = [[RepositoriesListVC alloc]
                         initWithRepositories:repositories];
-                    [wself.navigationController pushViewController:repositoriesListVC animated:YES];
-                    [wself hideActivityModalView];
+                    [sself.navigationController pushViewController:repositoriesListVC animated:YES];
+                    [sself hideActivityModalView];
                 } failure:^(NSArray *errors) {
                     for (NSError *error in errors) {
                         NSLog(@"Error: %@", error);
                     }
-                    [wself hideActivityModalView];
-                    [wself showNetworkErrorAlert:errors.firstObject];
+                    typeof(wself) __strong sself = wself;
+                    [sself hideActivityModalView];
+                    [sself showNetworkErrorAlert:errors.firstObject];
                 }];
         }
         failure:^(NSError *error) {
+            typeof(wself) __strong sself = wself;
             NSLog(@"Error: %@", error);
-            [wself hideActivityModalView];
-            [wself showNetworkErrorAlert:error];
+            [sself hideActivityModalView];
+            [sself showNetworkErrorAlert:error];
         }];
 }
 
@@ -141,16 +144,24 @@ static NSString *const kRepositoryCommitsCount = @"commits_count";
                 repository.commitsCount = [commitsCount integerValue];
                 dispatch_group_leave(group);
             } failure:^(NSError *error) {
-                [errors addObject:error];
+                @synchronized (errors) {
+                    [errors addObject:error];
+                }
                 dispatch_group_leave(group);
             }];
     }
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         NSLog(@"All tasks completed.");
         if (errors.count > 0) {
+            if (!failure) {
+                return;
+            }
             failure(errors);
         }
         else {
+            if (!success) {
+                return;
+            }
             success(repositories);
         }
     });
