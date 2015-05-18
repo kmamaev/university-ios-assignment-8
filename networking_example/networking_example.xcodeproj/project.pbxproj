@@ -25,6 +25,7 @@
 		AEB73B6818E99BEB0021BCCD /* GITHUBAPIController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEB73B6718E99BEB0021BCCD /* GITHUBAPIController.m */; };
 		B5A5FB7D1AC071A800013AE2 /* Repository.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A5FB7C1AC071A800013AE2 /* Repository.m */; };
 		B5ED482D1AC02EC90081A3DD /* RepositoriesListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ED482C1AC02EC90081A3DD /* RepositoriesListVC.m */; };
+		C0B1F7671B09FC3200A36F3F /* Mapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F7661B09FC3200A36F3F /* Mapper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,8 @@
 		B5A5FB7C1AC071A800013AE2 /* Repository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Repository.m; sourceTree = "<group>"; };
 		B5ED482B1AC02EC90081A3DD /* RepositoriesListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepositoriesListVC.h; sourceTree = "<group>"; };
 		B5ED482C1AC02EC90081A3DD /* RepositoriesListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepositoriesListVC.m; sourceTree = "<group>"; };
+		C0B1F7651B09FC3200A36F3F /* Mapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mapper.h; sourceTree = "<group>"; };
+		C0B1F7661B09FC3200A36F3F /* Mapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mapper.m; sourceTree = "<group>"; };
 		D2BDAC4868FC2024E8988028 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +149,8 @@
 				B5ED482C1AC02EC90081A3DD /* RepositoriesListVC.m */,
 				B5A5FB7B1AC071A800013AE2 /* Repository.h */,
 				B5A5FB7C1AC071A800013AE2 /* Repository.m */,
+				C0B1F7651B09FC3200A36F3F /* Mapper.h */,
+				C0B1F7661B09FC3200A36F3F /* Mapper.m */,
 				AEB73B4918E9979F0021BCCD /* Images.xcassets */,
 				AEB73B3818E9979F0021BCCD /* Supporting Files */,
 				AEB73B6618E99BEB0021BCCD /* GITHUBAPIController.h */,
@@ -315,6 +320,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0B1F7671B09FC3200A36F3F /* Mapper.m in Sources */,
 				AEB73B4818E9979F0021BCCD /* ViewController.m in Sources */,
 				B5A5FB7D1AC071A800013AE2 /* Repository.m in Sources */,
 				AEB73B6818E99BEB0021BCCD /* GITHUBAPIController.m in Sources */,

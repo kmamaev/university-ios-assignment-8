@@ -3,6 +3,7 @@
 #import <UIImageView+AFNetworking.h>
 #import "RepositoriesListVC.h"
 #import "Repository.h"
+#import "Mapper.h"
 
 
 static NSString *const kRepositoryName = @"name";
@@ -17,6 +18,7 @@ static NSString *const kRepositoryCommitsCount = @"commits_count";
 @property (strong, nonatomic) IBOutlet UITextField *textField;
 @property (strong, nonatomic) UIView *grayView;
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
+@property (strong, nonatomic) Mapper *mapper;
 @end
 
 
@@ -32,6 +34,14 @@ static NSString *const kRepositoryCommitsCount = @"commits_count";
         initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     self.activityIndicator.center = self.grayView.center;
     [self.grayView addSubview:self.activityIndicator];
+    
+    // Initialize mapper
+    self.mapper = [[Mapper alloc] init];
+    NSDictionary *repositoryScheme = @{
+            NSStringFromSelector(@selector(name)): kRepositoryName,
+            NSStringFromSelector(@selector(fullName)): kRepositoryFullName
+        };
+    [self.mapper addMappingScheme:repositoryScheme forClass:[Repository class]];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -80,7 +90,8 @@ static NSString *const kRepositoryCommitsCount = @"commits_count";
     [self.controller
         getRepositoriesForUser:userName
         success:^(NSArray *dictionaries) {
-            NSArray *repositories = [wself generateRepositoriesArrayFromDictionaries:dictionaries];
+            NSArray *repositories = [wself.mapper generateObjectsOfClass:[Repository class]
+                byDictionaries:dictionaries];
             [wself addCommitsCountToRepositories:(NSArray *)repositories
                 success:^(NSArray *repositories) {
                     typeof(wself) __strong sself = wself;
@@ -115,18 +126,6 @@ static NSString *const kRepositoryCommitsCount = @"commits_count";
 {
     [self.grayView removeFromSuperview];
     [self.activityIndicator stopAnimating];
-}
-
-- (NSArray *)generateRepositoriesArrayFromDictionaries:(NSArray *)dictionaries
-{
-    NSMutableArray *repositories = [NSMutableArray array];
-    for (NSDictionary *dict in dictionaries) {
-        Repository *repository = [[Repository alloc] init];
-        repository.name = dict[kRepositoryName];
-        repository.fullName = dict[kRepositoryFullName];
-        [repositories addObject:repository];
-    }
-    return repositories;
 }
 
 - (void)addCommitsCountToRepositories:(NSArray *)repositories
