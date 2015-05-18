@@ -21,6 +21,8 @@ static NSString *const kBaseAPIURL = @"https://api.github.com";
         NSURL *apiURL = [NSURL URLWithString:kBaseAPIURL];
         self.requestManager = [[AFHTTPRequestOperationManager alloc]
             initWithBaseURL:apiURL];
+        self.requestManager.requestSerializer = [AFJSONRequestSerializer serializer];
+        self.requestManager.responseSerializer = [AFJSONResponseSerializer serializer];
     }
     return self;
 }
@@ -146,7 +148,12 @@ static NSString *const kBaseAPIURL = @"https://api.github.com";
             if (!failure) {
                 return;
             }
-            failure(error);
+            if (error.code == -1011) {
+                success(@(0));
+            }
+            else {
+                failure(error);
+            }
         }];
 }
 
