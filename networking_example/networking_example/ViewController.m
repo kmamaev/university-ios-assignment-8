@@ -2,12 +2,11 @@
 #import "GITHUBAPIController.h"
 #import <UIImageView+AFNetworking.h>
 #import "RepositoriesListVC.h"
-#import "Repository.h"
 #import "Mapper.h"
+#import "MapperInitializer.h"
+#import "Repository.h"
 
 
-static NSString *const kRepositoryName = @"name";
-static NSString *const kRepositoryFullName = @"full_name";
 static NSString *const kRepositoryCommitsCount = @"commits_count";
 
 
@@ -35,13 +34,9 @@ static NSString *const kRepositoryCommitsCount = @"commits_count";
     self.activityIndicator.center = self.grayView.center;
     [self.grayView addSubview:self.activityIndicator];
     
-    // Initialize mapper
+    // Initialize mapper with mapping schemes
     self.mapper = [[Mapper alloc] init];
-    NSDictionary *repositoryScheme = @{
-            NSStringFromSelector(@selector(name)): kRepositoryName,
-            NSStringFromSelector(@selector(fullName)): kRepositoryFullName
-        };
-    [self.mapper addMappingScheme:repositoryScheme forClass:[Repository class]];
+    [MapperInitializer initializeMappingSchemesForMapper:self.mapper];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

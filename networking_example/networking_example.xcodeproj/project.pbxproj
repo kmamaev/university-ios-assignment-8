@@ -26,6 +26,7 @@
 		B5A5FB7D1AC071A800013AE2 /* Repository.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A5FB7C1AC071A800013AE2 /* Repository.m */; };
 		B5ED482D1AC02EC90081A3DD /* RepositoriesListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ED482C1AC02EC90081A3DD /* RepositoriesListVC.m */; };
 		C0B1F7671B09FC3200A36F3F /* Mapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F7661B09FC3200A36F3F /* Mapper.m */; };
+		C0B1F76A1B0A114C00A36F3F /* MapperInitializer.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F7691B0A114C00A36F3F /* MapperInitializer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,8 @@
 		B5ED482C1AC02EC90081A3DD /* RepositoriesListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepositoriesListVC.m; sourceTree = "<group>"; };
 		C0B1F7651B09FC3200A36F3F /* Mapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mapper.h; sourceTree = "<group>"; };
 		C0B1F7661B09FC3200A36F3F /* Mapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mapper.m; sourceTree = "<group>"; };
+		C0B1F7681B0A114C00A36F3F /* MapperInitializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapperInitializer.h; sourceTree = "<group>"; };
+		C0B1F7691B0A114C00A36F3F /* MapperInitializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapperInitializer.m; sourceTree = "<group>"; };
 		D2BDAC4868FC2024E8988028 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,6 +154,8 @@
 				B5A5FB7C1AC071A800013AE2 /* Repository.m */,
 				C0B1F7651B09FC3200A36F3F /* Mapper.h */,
 				C0B1F7661B09FC3200A36F3F /* Mapper.m */,
+				C0B1F7681B0A114C00A36F3F /* MapperInitializer.h */,
+				C0B1F7691B0A114C00A36F3F /* MapperInitializer.m */,
 				AEB73B4918E9979F0021BCCD /* Images.xcassets */,
 				AEB73B3818E9979F0021BCCD /* Supporting Files */,
 				AEB73B6618E99BEB0021BCCD /* GITHUBAPIController.h */,
@@ -327,6 +332,7 @@
 				B5ED482D1AC02EC90081A3DD /* RepositoriesListVC.m in Sources */,
 				AEB73B4218E9979F0021BCCD /* AppDelegate.m in Sources */,
 				AEB73B3E18E9979F0021BCCD /* main.m in Sources */,
+				C0B1F76A1B0A114C00A36F3F /* MapperInitializer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
