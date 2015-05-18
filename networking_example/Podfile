@@ -1,5 +1,4 @@
 platform :ios, '7.0'
 
-pod 'AFNetworking'
-pod 'ViewDeck'
+pod 'AFNetworking', '~> 2.5'
 
