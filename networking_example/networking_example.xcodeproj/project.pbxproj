@@ -29,6 +29,7 @@
 		C0B1F77C1B0B390700A36F3F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F77A1B0B390700A36F3F /* ViewController.m */; };
 		C0B1F7831B0B39F400A36F3F /* ReporitoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F7811B0B39F400A36F3F /* ReporitoryVC.m */; };
 		C0B1F7841B0B39F400A36F3F /* ReporitoryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0B1F7821B0B39F400A36F3F /* ReporitoryVC.xib */; };
+		C0B1F7871B0B53B900A36F3F /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F7861B0B53B900A36F3F /* Person.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,8 @@
 		C0B1F7801B0B39F400A36F3F /* ReporitoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReporitoryVC.h; sourceTree = "<group>"; };
 		C0B1F7811B0B39F400A36F3F /* ReporitoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReporitoryVC.m; sourceTree = "<group>"; };
 		C0B1F7821B0B39F400A36F3F /* ReporitoryVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReporitoryVC.xib; sourceTree = "<group>"; };
+		C0B1F7851B0B53B900A36F3F /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		C0B1F7861B0B53B900A36F3F /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		D2BDAC4868FC2024E8988028 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,9 +155,9 @@
 				C0B1F7721B0B38D900A36F3F /* Models */,
 				AEB73B4018E9979F0021BCCD /* AppDelegate.h */,
 				AEB73B4118E9979F0021BCCD /* AppDelegate.m */,
-				AEB73B4318E9979F0021BCCD /* Main.storyboard */,
 				C0B1F7651B09FC3200A36F3F /* Mapper.h */,
 				C0B1F7661B09FC3200A36F3F /* Mapper.m */,
+				AEB73B4318E9979F0021BCCD /* Main.storyboard */,
 				C0B1F7681B0A114C00A36F3F /* MapperInitializer.h */,
 				C0B1F7691B0A114C00A36F3F /* MapperInitializer.m */,
 				AEB73B6618E99BEB0021BCCD /* GITHUBAPIController.h */,
@@ -199,6 +202,8 @@
 			children = (
 				C0B1F7731B0B38D900A36F3F /* Repository.h */,
 				C0B1F7741B0B38D900A36F3F /* Repository.m */,
+				C0B1F7851B0B53B900A36F3F /* Person.h */,
+				C0B1F7861B0B53B900A36F3F /* Person.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -352,6 +357,7 @@
 			files = (
 				C0B1F77B1B0B390700A36F3F /* RepositoriesListVC.m in Sources */,
 				C0B1F7671B09FC3200A36F3F /* Mapper.m in Sources */,
+				C0B1F7871B0B53B900A36F3F /* Person.m in Sources */,
 				C0B1F77C1B0B390700A36F3F /* ViewController.m in Sources */,
 				C0B1F7751B0B38D900A36F3F /* Repository.m in Sources */,
 				AEB73B6818E99BEB0021BCCD /* GITHUBAPIController.m in Sources */,
