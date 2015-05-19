@@ -6,6 +6,7 @@ static NSString *const defaultDateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
 
 
 @implementation Mapper
+// TODO: implement error handling
 
 - (instancetype)init
 {
@@ -28,15 +29,54 @@ static NSString *const defaultDateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
 
 - (NSObject *)generateObjectOfClass:(Class)classObj byDictionary:(NSDictionary *)dictionary
 {
-    // TODO: handle absenting of the class key in the mapping schemes
-    
+    return [self convertValue:dictionary toType:classObj];
+}
+
+- (NSArray *)generateObjectsOfClass:(Class)classObj byDictionaries:(NSArray *)dictionaries
+{
+    NSMutableArray *objects = [[NSMutableArray alloc] init];
+    for (NSDictionary *dictionary in dictionaries) {
+        NSObject *object = [self generateObjectOfClass:classObj byDictionary:dictionary];
+        [objects addObject:object];
+    }
+    return objects;
+}
+
+- (NSObject *)convertValue:(NSObject *)value toType:(Class)classObj
+{
     NSDictionary *mappingScheme = self.mappingSchemes[NSStringFromClass(classObj)];
-    
+    if (mappingScheme) {
+        assert([value isKindOfClass:[NSDictionary class]]);
+        return [self convertDictionary:(NSDictionary *)value toType:classObj
+            withMappingScheme:mappingScheme];
+    }
+    else if (classObj == [NSString class]) {
+        return (NSString *)value;
+    }
+    else if (classObj == [NSDate class]) {
+        return [self.dateFormatter dateFromString:(NSString *)value];
+    }
+    else if (classObj == [NSURL class]) {
+        return [NSURL URLWithString:(NSString *)value];
+    }
+    else if (classObj == [NSNumber class]) {
+        return (NSNumber *)value;
+    }
+    else {
+        NSLog(@"Invalid class object: %@", NSStringFromClass(classObj));
+        assert(false);
+        return nil;
+    }
+}
+
+- (NSObject *)convertDictionary:(NSDictionary *)dictionary toType:(Class)classObj
+    withMappingScheme:(NSDictionary *)mappingScheme
+{
     NSObject *object = [[classObj alloc] init];
     
     for (NSString *key in mappingScheme.allKeys) {
-        // TODO: check if the dictionary actually contains the key
         NSString *value = dictionary[mappingScheme[key]];
+        assert(value);
         
         objc_property_t property = class_getProperty(classObj, [key UTF8String]);
         char const *propertyAttrs = property_getAttributes(property);
@@ -59,43 +99,15 @@ static NSString *const defaultDateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
             NSString *typeClassName = [typeAttribute substringWithRange:
                 NSMakeRange(3, typeAttribute.length - 4)];
             Class typeClass = NSClassFromString(typeClassName);
-            [object setValue:[self convertString:value toType:typeClass] forKey:key];
+            [object setValue:[self convertValue:value toType:typeClass] forKey:key];
         }
         else {
             NSLog(@"Error: Unrecognized property type: %@", typeAttribute);
-            // TODO: return error
+            assert(false);
         }
     }
     
     return object;
-}
-
-- (NSArray *)generateObjectsOfClass:(Class)classObj byDictionaries:(NSArray *)dictionaries
-{
-    NSMutableArray *objects = [[NSMutableArray alloc] init];
-    for (NSDictionary *dictionary in dictionaries) {
-        NSObject *object = [self generateObjectOfClass:classObj byDictionary:dictionary];
-        [objects addObject:object];
-    }
-    return objects;
-}
-
-- (id)convertString:(NSString *)value toType:(Class)classObj
-{
-    if (classObj == [NSString class]) {
-        return value;
-    }
-    else if (classObj == [NSDate class]) {
-        return [self.dateFormatter dateFromString:value];
-    }
-    else if (classObj == [NSURL class]) {
-        return [NSURL URLWithString:value];
-    }
-    else {
-        NSLog(@"Unrecognized class object: %@", NSStringFromClass(classObj));
-        // TODO: return error
-        return nil;
-    }
 }
 
 @end

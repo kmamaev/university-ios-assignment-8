@@ -1,5 +1,6 @@
 #import "ReporitoryVC.h"
 #import "Repository.h"
+#import "Person.h"
 
 
 @interface ReporitoryVC ()
@@ -42,8 +43,7 @@
     }
 
     self.nameLabel.text = self.repository.name;
-    // TODO: implement owner displaying
-    self.ownerLabel.text = @"Not implemented yet";
+    self.ownerLabel.text = self.repository.owner.name;
     self.fullNameLabel.text = self.repository.fullName;
     self.descriptionLabel.text = self.repository.repositoryDescription;
     self.privacyLabel.text = self.repository.isPrivate ? @"Yes" : @"No";
