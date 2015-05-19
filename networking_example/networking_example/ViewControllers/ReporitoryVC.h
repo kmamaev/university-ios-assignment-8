@@ -5,6 +5,6 @@
 
 
 @interface ReporitoryVC : ViewController
-@property (nonatomic, strong) Repository *repository;
+@property (nonatomic, strong, readonly) Repository *repository;
 - (instancetype)initWithRepository:(Repository *)repository;
 @end
