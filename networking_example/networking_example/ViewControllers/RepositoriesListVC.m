@@ -1,10 +1,11 @@
 #import "RepositoriesListVC.h"
 #import "Repository.h"
+#import "ReporitoryVC.h"
 
 
 static NSString *const reuseId = @"ReuseId";
 
-@interface RepositoriesListVC ()
+@interface RepositoriesListVC () <UITableViewDataSource, UITableViewDelegate>
 @end
 
 
@@ -19,7 +20,7 @@ static NSString *const reuseId = @"ReuseId";
     return self;
 }
 
-#pragma mark - Table view data source
+#pragma mark - UITableViewDataSource implementation
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -40,6 +41,16 @@ static NSString *const reuseId = @"ReuseId";
     cell.detailTextLabel.text = [NSString stringWithFormat:@"commits count = %ld",
         repository.commitsCount];
     return cell;
+}
+
+#pragma mark - UITableViewDelegate implementation
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    ReporitoryVC *repositoryVC = [[ReporitoryVC alloc] initWithRepository:self.repositories[indexPath.row]];
+    [self.navigationController pushViewController:repositoryVC animated:YES];
 }
 
 @end

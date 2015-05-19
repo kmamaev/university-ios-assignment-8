@@ -27,6 +27,8 @@
 		C0B1F7751B0B38D900A36F3F /* Repository.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F7741B0B38D900A36F3F /* Repository.m */; };
 		C0B1F77B1B0B390700A36F3F /* RepositoriesListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F7781B0B390700A36F3F /* RepositoriesListVC.m */; };
 		C0B1F77C1B0B390700A36F3F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F77A1B0B390700A36F3F /* ViewController.m */; };
+		C0B1F7831B0B39F400A36F3F /* ReporitoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F7811B0B39F400A36F3F /* ReporitoryVC.m */; };
+		C0B1F7841B0B39F400A36F3F /* ReporitoryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0B1F7821B0B39F400A36F3F /* ReporitoryVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,9 @@
 		C0B1F7781B0B390700A36F3F /* RepositoriesListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepositoriesListVC.m; sourceTree = "<group>"; };
 		C0B1F7791B0B390700A36F3F /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C0B1F77A1B0B390700A36F3F /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C0B1F7801B0B39F400A36F3F /* ReporitoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReporitoryVC.h; sourceTree = "<group>"; };
+		C0B1F7811B0B39F400A36F3F /* ReporitoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReporitoryVC.m; sourceTree = "<group>"; };
+		C0B1F7821B0B39F400A36F3F /* ReporitoryVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReporitoryVC.xib; sourceTree = "<group>"; };
 		D2BDAC4868FC2024E8988028 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -205,6 +210,9 @@
 				C0B1F7781B0B390700A36F3F /* RepositoriesListVC.m */,
 				C0B1F7791B0B390700A36F3F /* ViewController.h */,
 				C0B1F77A1B0B390700A36F3F /* ViewController.m */,
+				C0B1F7801B0B39F400A36F3F /* ReporitoryVC.h */,
+				C0B1F7811B0B39F400A36F3F /* ReporitoryVC.m */,
+				C0B1F7821B0B39F400A36F3F /* ReporitoryVC.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -288,6 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEB73B4A18E9979F0021BCCD /* Images.xcassets in Resources */,
+				C0B1F7841B0B39F400A36F3F /* ReporitoryVC.xib in Resources */,
 				AEB73B3C18E9979F0021BCCD /* InfoPlist.strings in Resources */,
 				AEB73B4518E9979F0021BCCD /* Main.storyboard in Resources */,
 			);
@@ -348,6 +357,7 @@
 				AEB73B6818E99BEB0021BCCD /* GITHUBAPIController.m in Sources */,
 				AEB73B4218E9979F0021BCCD /* AppDelegate.m in Sources */,
 				AEB73B3E18E9979F0021BCCD /* main.m in Sources */,
+				C0B1F7831B0B39F400A36F3F /* ReporitoryVC.m in Sources */,
 				C0B1F76A1B0A114C00A36F3F /* MapperInitializer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
