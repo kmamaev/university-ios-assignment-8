@@ -6,6 +6,7 @@
 #import "MapperInitializer.h"
 #import "Repository.h"
 #import "User.h"
+#import "UsersVC.h"
 
 
 static NSString *const kRepositoryCommitsCount = @"commits_count";
@@ -167,7 +168,8 @@ static NSString *const kRepositoryCommitsCount = @"commits_count";
             NSArray *usersDictionaries = searchResult[@"items"];
             NSArray *users = [sself.mapper generateObjectsOfClass:[User class]
                 byDictionaries:usersDictionaries];
-            // TODO: implement openning of UsersVC
+            UsersVC *usersVC = [[UsersVC alloc] initWithUsers:users];
+            [sself.navigationController pushViewController:usersVC animated:YES];
             [sself hideActivityModalView];
         } failure:^(NSError *error) {
             typeof(wself) __strong sself = wself;
