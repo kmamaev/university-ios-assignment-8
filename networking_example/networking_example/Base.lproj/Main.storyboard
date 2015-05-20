@@ -20,7 +20,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pXs-cj-7jc">
                                 <rect key="frame" x="20" y="135" width="280" height="97"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Search repositories of the user">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -28,10 +28,7 @@
                                     <action selector="buttonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="kbR-Iz-KPQ"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9uw-Dh-v7d">
-                                <rect key="frame" x="40" y="264" width="240" height="269"/>
-                            </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NVq-qk-8VH">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NVq-qk-8VH">
                                 <rect key="frame" x="20" y="84" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="go"/>
@@ -39,14 +36,23 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="qTy-6a-9VG"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ThY-ZB-qLg">
+                                <rect key="frame" x="20" y="240" width="280" height="97"/>
+                                <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Search users">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="userSearchButtonDidTap:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="JWR-Sh-Pan"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="4d1-Qr-U9g"/>
                     <connections>
-                        <outlet property="button" destination="pXs-cj-7jc" id="N08-f0-5e1"/>
-                        <outlet property="imageView" destination="9uw-Dh-v7d" id="Dox-Tn-LGC"/>
-                        <outlet property="textField" destination="NVq-qk-8VH" id="pB5-FA-gaa"/>
+                        <outlet property="userNameField" destination="NVq-qk-8VH" id="1s1-QV-4VF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

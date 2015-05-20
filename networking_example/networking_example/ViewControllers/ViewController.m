@@ -12,9 +12,7 @@ static NSString *const kRepositoryCommitsCount = @"commits_count";
 
 @interface ViewController () <UITextFieldDelegate>
 @property (strong, nonatomic) GITHUBAPIController *controller;
-@property (strong, nonatomic) IBOutlet UIImageView *imageView;
-@property (strong, nonatomic) IBOutlet UIButton *button;
-@property (strong, nonatomic) IBOutlet UITextField *textField;
+@property (strong, nonatomic) IBOutlet UITextField *userNameField;
 @property (strong, nonatomic) UIView *grayView;
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) Mapper *mapper;
@@ -41,7 +39,7 @@ static NSString *const kRepositoryCommitsCount = @"commits_count";
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if (self.textField.text.length > 0) {
+    if (self.userNameField.text.length > 0) {
         [self getRepositoriesAndShow];
     }
     return NO;
@@ -49,36 +47,18 @@ static NSString *const kRepositoryCommitsCount = @"commits_count";
 
 - (IBAction)buttonTapped:(UIButton *)sender
 {
-    if (self.textField.text.length > 0) {
+    if (self.userNameField.text.length > 0) {
         [self getRepositoriesAndShow];
     }
-}
-
-- (void)showImage
-{
-    NSString *userName = self.textField.text;
-    
-    [self.textField resignFirstResponder];
-    
-    typeof(self) __weak wself = self;
-    
-    [self.controller
-        getAvatarForUser:userName
-        success:^(NSURL *imageURL) {
-            [wself.imageView setImageWithURL:imageURL];
-        }
-        failure:^(NSError *error) {
-            NSLog(@"Error: %@", error);
-        }];
 }
 
 - (void)getRepositoriesAndShow
 {
     [self showActivityModalView];
     
-    NSString *userName = self.textField.text;
+    NSString *userName = self.userNameField.text;
     
-    [self.textField resignFirstResponder];
+    [self.userNameField resignFirstResponder];
     
     typeof(self) __weak wself = self;
     
@@ -175,5 +155,11 @@ static NSString *const kRepositoryCommitsCount = @"commits_count";
     [self presentViewController:alert animated:YES completion:nil];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
+
+- (IBAction)userSearchButtonDidTap:(UIButton *)sender
+{
+    // TODO: implement this
+}
+
 
 @end
