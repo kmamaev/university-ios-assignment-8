@@ -1,14 +1,14 @@
 #import <Foundation/Foundation.h>
 
 
-@class Person;
+@class User;
 
 
 @interface Repository : NSObject
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *fullName;
 @property (nonatomic, assign) NSInteger commitsCount;
-@property (nonatomic, strong) Person *owner;
+@property (nonatomic, strong) User *owner;
 @property (nonatomic, copy) NSString *repositoryDescription;
 @property (nonatomic, assign) BOOL isPrivate;
 @property (nonatomic, strong) NSURL *repositoryUrl;

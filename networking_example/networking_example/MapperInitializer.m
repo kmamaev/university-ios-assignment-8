@@ -1,7 +1,7 @@
 #import "MapperInitializer.h"
 #import "Mapper.h"
 #import "Repository.h"
-#import "Person.h"
+#import "User.h"
 
 
 static Mapper *staticMapper;
@@ -17,12 +17,12 @@ static NSString *const kRepositoryForksCount = @"forks_count";
 static NSString *const kRepositoryCreationDate = @"created_at";
 static NSString *const kRepositoryLastCommitDate = @"pushed_at";
 
-static NSString *const kPersonName = @"login";
-static NSString *const kPersonId = @"id";
-static NSString *const kPersonUrl = @"url";
-static NSString *const kPersonReposUrl = @"repos_url";
-static NSString *const kPersonAvatarUrl = @"avatar_url";
-static NSString *const kPersonType = @"type";
+static NSString *const kUserName = @"login";
+static NSString *const kUserId = @"id";
+static NSString *const kUserUrl = @"url";
+static NSString *const kUserReposUrl = @"repos_url";
+static NSString *const kUserAvatarUrl = @"avatar_url";
+static NSString *const kUserType = @"type";
 
 
 @implementation MapperInitializer
@@ -31,7 +31,7 @@ static NSString *const kPersonType = @"type";
 {
     staticMapper = mapper;
     [self initializeRepositoryMappingScheme];
-    [self initializePersonMappingScheme];
+    [self initializeUserMappingScheme];
 }
 
 + (void)initializeRepositoryMappingScheme
@@ -51,17 +51,17 @@ static NSString *const kPersonType = @"type";
     [staticMapper addMappingScheme:repositoryScheme forClass:[Repository class]];
 }
 
-+ (void)initializePersonMappingScheme
++ (void)initializeUserMappingScheme
 {
-    NSDictionary *personScheme = @{
-            NSStringFromSelector(@selector(name)): kPersonName,
-            NSStringFromSelector(@selector(personId)): kPersonId,
-            NSStringFromSelector(@selector(url)): kPersonUrl,
-            NSStringFromSelector(@selector(reposUrl)): kPersonReposUrl,
-            NSStringFromSelector(@selector(avatarUrl)): kPersonAvatarUrl,
-            NSStringFromSelector(@selector(type)): kPersonType
+    NSDictionary *UserScheme = @{
+            NSStringFromSelector(@selector(name)): kUserName,
+            NSStringFromSelector(@selector(userId)): kUserId,
+            NSStringFromSelector(@selector(url)): kUserUrl,
+            NSStringFromSelector(@selector(reposUrl)): kUserReposUrl,
+            NSStringFromSelector(@selector(avatarUrl)): kUserAvatarUrl,
+            NSStringFromSelector(@selector(type)): kUserType
         };
-    [staticMapper addMappingScheme:personScheme forClass:[Person class]];
+    [staticMapper addMappingScheme:UserScheme forClass:[User class]];
 }
 
 @end

@@ -5,7 +5,7 @@
 #import "Mapper.h"
 #import "MapperInitializer.h"
 #import "Repository.h"
-#import "Person.h"
+#import "User.h"
 
 
 static NSString *const kRepositoryCommitsCount = @"commits_count";
@@ -165,7 +165,7 @@ static NSString *const kRepositoryCommitsCount = @"commits_count";
     [self.controller searchUsersByString:self.userNameField.text success:^(NSDictionary *searchResult) {
             typeof(wself) __strong sself = wself;
             NSArray *usersDictionaries = searchResult[@"items"];
-            NSArray *users = [sself.mapper generateObjectsOfClass:[Person class]
+            NSArray *users = [sself.mapper generateObjectsOfClass:[User class]
                 byDictionaries:usersDictionaries];
             // TODO: implement openning of UsersVC
             [sself hideActivityModalView];

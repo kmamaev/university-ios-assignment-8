@@ -1,7 +1,7 @@
 #import "ReporitoryVC.h"
-#import "PersonVC.h"
+#import "UserVC.h"
 #import "Repository.h"
-#import "Person.h"
+#import "User.h"
 
 
 @interface ReporitoryVC ()
@@ -60,8 +60,8 @@
 
 - (IBAction)ownerButtonDidTap:(UIButton *)sender
 {
-    PersonVC *personVC = [[PersonVC alloc] initWithPerson:self.repository.owner];
-    [self.navigationController pushViewController:personVC animated:YES];
+    UserVC *userVC = [[UserVC alloc] initWithUser:self.repository.owner];
+    [self.navigationController pushViewController:userVC animated:YES];
 }
 
 @end

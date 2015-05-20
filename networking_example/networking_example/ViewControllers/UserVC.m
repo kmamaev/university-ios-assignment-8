@@ -1,8 +1,8 @@
-#import "PersonVC.h"
-#import "Person.h"
+#import "UserVC.h"
+#import "User.h"
 
 
-@interface PersonVC ()
+@interface UserVC ()
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *idLabel;
 @property (strong, nonatomic) IBOutlet UILabel *urlLabel;
@@ -13,13 +13,13 @@
 @end
 
 
-@implementation PersonVC
+@implementation UserVC
 
-- (instancetype)initWithPerson:(Person *)person
+- (instancetype)initWithUser:(User *)user
 {
     self = [super init];
     if (self) {
-        _person = person;
+        _user = user;
     }
     return self;
 }
@@ -29,12 +29,12 @@
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
-    self.nameLabel.text = self.person.name;
-    self.idLabel.text = [self.person.personId stringValue];
-    self.urlLabel.text = self.person.url.absoluteString;
-    self.repositoriesUrlLabel.text = self.person.reposUrl.absoluteString;
-    self.avatarUrlLabel.text = self.person.avatarUrl.absoluteString;
-    self.typeLabel.text = self.person.type;
+    self.nameLabel.text = self.user.name;
+    self.idLabel.text = [self.user.userId stringValue];
+    self.urlLabel.text = self.user.url.absoluteString;
+    self.repositoriesUrlLabel.text = self.user.reposUrl.absoluteString;
+    self.avatarUrlLabel.text = self.user.avatarUrl.absoluteString;
+    self.typeLabel.text = self.user.type;
 }
 
 @end
