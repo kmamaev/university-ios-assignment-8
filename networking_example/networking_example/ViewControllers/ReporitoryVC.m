@@ -61,6 +61,7 @@
 - (IBAction)ownerButtonDidTap:(UIButton *)sender
 {
     UserVC *userVC = [[UserVC alloc] initWithUser:self.repository.owner];
+    userVC.mapper = self.mapper;
     [self.navigationController pushViewController:userVC animated:YES];
 }
 

@@ -7,16 +7,14 @@
 #import "Repository.h"
 #import "User.h"
 #import "UsersVC.h"
-
-
-static NSString *const kRepositoryCommitsCount = @"commits_count";
+#import "RepositoriesHelper.h"
+#import "UIViewController+ActivityModalView.h"
+#import "AlertUtils.h"
 
 
 @interface ViewController () <UITextFieldDelegate>
 @property (strong, nonatomic) GITHUBAPIController *controller;
 @property (strong, nonatomic) IBOutlet UITextField *userNameField;
-@property (strong, nonatomic) UIView *grayView;
-@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) Mapper *mapper;
 @end
 
@@ -27,12 +25,6 @@ static NSString *const kRepositoryCommitsCount = @"commits_count";
 {
     [super viewDidLoad];
     self.controller = [GITHUBAPIController sharedController];
-    self.grayView = [[UIView alloc] initWithFrame:self.view.bounds];
-    self.grayView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
-    self.activityIndicator = [[UIActivityIndicatorView alloc]
-        initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    self.activityIndicator.center = self.grayView.center;
-    [self.grayView addSubview:self.activityIndicator];
     
     // Initialize mapper with mapping schemes
     self.mapper = [[Mapper alloc] init];
@@ -69,11 +61,12 @@ static NSString *const kRepositoryCommitsCount = @"commits_count";
         success:^(NSArray *dictionaries) {
             NSArray *repositories = [wself.mapper generateObjectsOfClass:[Repository class]
                 byDictionaries:dictionaries];
-            [wself addCommitsCountToRepositories:(NSArray *)repositories
+            [RepositoriesHelper addCommitsCountToRepositories:(NSArray *)repositories
                 success:^(NSArray *repositories) {
                     typeof(wself) __strong sself = wself;
                     RepositoriesListVC *repositoriesListVC = [[RepositoriesListVC alloc]
                         initWithRepositories:repositories];
+                    repositoriesListVC.mapper = self.mapper;
                     [sself.navigationController pushViewController:repositoriesListVC animated:YES];
                     [sself hideActivityModalView];
                 } failure:^(NSArray *errors) {
@@ -82,80 +75,16 @@ static NSString *const kRepositoryCommitsCount = @"commits_count";
                     }
                     typeof(wself) __strong sself = wself;
                     [sself hideActivityModalView];
-                    [sself showNetworkErrorAlert:errors.firstObject];
+                    NSError *error = errors.firstObject;
+                    showInfoAlert(@"Unable to receive data", error.localizedDescription, sself);
                 }];
         }
         failure:^(NSError *error) {
             typeof(wself) __strong sself = wself;
             NSLog(@"Error: %@", error);
             [sself hideActivityModalView];
-            [sself showNetworkErrorAlert:error];
+            showInfoAlert(@"Unable to receive data", error.localizedDescription, sself);
         }];
-}
-
-- (void)showActivityModalView
-{
-    [self.view addSubview:self.grayView];
-    [self.activityIndicator startAnimating];
-}
-
-- (void)hideActivityModalView
-{
-    [self.grayView removeFromSuperview];
-    [self.activityIndicator stopAnimating];
-}
-
-- (void)addCommitsCountToRepositories:(NSArray *)repositories
-    success:(void (^)(NSArray *))success
-    failure:(void (^)(NSArray *))failure
-{
-    NSMutableArray *__block errors = [NSMutableArray array];
-    dispatch_group_t group = dispatch_group_create();
-    for (Repository *repository in repositories) {
-        dispatch_group_enter(group);
-        [self.controller
-            getCommitsCountForRepositoryWithFullName:repository.fullName
-            success:^(NSNumber *commitsCount) {
-                NSLog(@"%@ commits count: %@", repository.name, commitsCount);
-                repository.commitsCount = [commitsCount integerValue];
-                dispatch_group_leave(group);
-            } failure:^(NSError *error) {
-                @synchronized (errors) {
-                    [errors addObject:error];
-                }
-                dispatch_group_leave(group);
-            }];
-    }
-    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-        NSLog(@"All tasks completed.");
-        if (errors.count > 0) {
-            if (!failure) {
-                return;
-            }
-            failure(errors);
-        }
-        else {
-            if (!success) {
-                return;
-            }
-            success(repositories);
-        }
-    });
-}
-
-- (void)showNetworkErrorAlert:(NSError *)error
-{
-    UIAlertController *alert = [UIAlertController
-        alertControllerWithTitle:@"Unable to receive data"
-        message:error.localizedDescription
-        preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *closeAlert = [UIAlertAction
-        actionWithTitle:@"Close"
-        style:UIAlertActionStyleDefault
-        handler:nil];
-    [alert addAction:closeAlert];
-    [self presentViewController:alert animated:YES completion:nil];
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
 - (IBAction)userSearchButtonDidTap:(UIButton *)sender
@@ -169,15 +98,15 @@ static NSString *const kRepositoryCommitsCount = @"commits_count";
             NSArray *users = [sself.mapper generateObjectsOfClass:[User class]
                 byDictionaries:usersDictionaries];
             UsersVC *usersVC = [[UsersVC alloc] initWithUsers:users];
+            usersVC.mapper = self.mapper;
             [sself.navigationController pushViewController:usersVC animated:YES];
             [sself hideActivityModalView];
         } failure:^(NSError *error) {
             typeof(wself) __strong sself = wself;
             NSLog(@"Error: %@", error);
             [sself hideActivityModalView];
-            [sself showNetworkErrorAlert:error];
+            showInfoAlert(@"Unable to receive data", error.localizedDescription, sself);
         }];
 }
-
 
 @end

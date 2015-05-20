@@ -66,6 +66,7 @@ static NSString *const reuseId = @"UsersVCReuseId";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     UserVC *userVC = [[UserVC alloc] initWithUser:self.users[indexPath.row]];
+    userVC.mapper = self.mapper;
     [self.navigationController pushViewController:userVC animated:YES];
 }
 

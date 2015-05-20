@@ -50,6 +50,7 @@ static NSString *const reuseId = @"ReuseId";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     ReporitoryVC *repositoryVC = [[ReporitoryVC alloc] initWithRepository:self.repositories[indexPath.row]];
+    repositoryVC.mapper = self.mapper;
     [self.navigationController pushViewController:repositoryVC animated:YES];
 }
 
