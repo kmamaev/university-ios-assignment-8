@@ -1,11 +1,12 @@
 #import "ReporitoryVC.h"
+#import "PersonVC.h"
 #import "Repository.h"
 #import "Person.h"
 
 
 @interface ReporitoryVC ()
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
-@property (strong, nonatomic) IBOutlet UILabel *ownerLabel;
+@property (strong, nonatomic) IBOutlet UIButton *ownerButton;
 @property (strong, nonatomic) IBOutlet UILabel *fullNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (strong, nonatomic) IBOutlet UILabel *privacyLabel;
@@ -15,6 +16,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *commitsCountLabel;
 @property (strong, nonatomic) IBOutlet UILabel *creationDateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *lastCommitLabel;
+- (IBAction)ownerButtonDidTap:(UIButton *)sender;
 @end
 
 
@@ -43,7 +45,8 @@
     }
 
     self.nameLabel.text = self.repository.name;
-    self.ownerLabel.text = self.repository.owner.name;
+    [self.ownerButton setTitle:self.repository.owner.name forState:UIControlStateNormal];
+    self.ownerButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     self.fullNameLabel.text = self.repository.fullName;
     self.descriptionLabel.text = self.repository.repositoryDescription;
     self.privacyLabel.text = self.repository.isPrivate ? @"Yes" : @"No";
@@ -53,6 +56,12 @@
     self.commitsCountLabel.text = [NSString stringWithFormat:@"%ld", (long)self.repository.commitsCount];
     self.creationDateLabel.text = [formatter stringFromDate:self.repository.creationDate];
     self.lastCommitLabel.text = [formatter stringFromDate:self.repository.lastCommitDate];
+}
+
+- (IBAction)ownerButtonDidTap:(UIButton *)sender
+{
+    PersonVC *personVC = [[PersonVC alloc] initWithPerson:self.repository.owner];
+    [self.navigationController pushViewController:personVC animated:YES];
 }
 
 @end

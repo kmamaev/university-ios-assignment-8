@@ -30,6 +30,8 @@
 		C0B1F7831B0B39F400A36F3F /* ReporitoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F7811B0B39F400A36F3F /* ReporitoryVC.m */; };
 		C0B1F7841B0B39F400A36F3F /* ReporitoryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0B1F7821B0B39F400A36F3F /* ReporitoryVC.xib */; };
 		C0B1F7871B0B53B900A36F3F /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F7861B0B53B900A36F3F /* Person.m */; };
+		C0B1F78B1B0C550800A36F3F /* PersonVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F7891B0C550800A36F3F /* PersonVC.m */; };
+		C0B1F78C1B0C550800A36F3F /* PersonVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0B1F78A1B0C550800A36F3F /* PersonVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,9 @@
 		C0B1F7821B0B39F400A36F3F /* ReporitoryVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReporitoryVC.xib; sourceTree = "<group>"; };
 		C0B1F7851B0B53B900A36F3F /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		C0B1F7861B0B53B900A36F3F /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		C0B1F7881B0C550800A36F3F /* PersonVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonVC.h; sourceTree = "<group>"; };
+		C0B1F7891B0C550800A36F3F /* PersonVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonVC.m; sourceTree = "<group>"; };
+		C0B1F78A1B0C550800A36F3F /* PersonVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonVC.xib; sourceTree = "<group>"; };
 		D2BDAC4868FC2024E8988028 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -218,6 +223,9 @@
 				C0B1F7801B0B39F400A36F3F /* ReporitoryVC.h */,
 				C0B1F7811B0B39F400A36F3F /* ReporitoryVC.m */,
 				C0B1F7821B0B39F400A36F3F /* ReporitoryVC.xib */,
+				C0B1F7881B0C550800A36F3F /* PersonVC.h */,
+				C0B1F7891B0C550800A36F3F /* PersonVC.m */,
+				C0B1F78A1B0C550800A36F3F /* PersonVC.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -303,6 +311,7 @@
 				AEB73B4A18E9979F0021BCCD /* Images.xcassets in Resources */,
 				C0B1F7841B0B39F400A36F3F /* ReporitoryVC.xib in Resources */,
 				AEB73B3C18E9979F0021BCCD /* InfoPlist.strings in Resources */,
+				C0B1F78C1B0C550800A36F3F /* PersonVC.xib in Resources */,
 				AEB73B4518E9979F0021BCCD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,6 +366,7 @@
 			files = (
 				C0B1F77B1B0B390700A36F3F /* RepositoriesListVC.m in Sources */,
 				C0B1F7671B09FC3200A36F3F /* Mapper.m in Sources */,
+				C0B1F78B1B0C550800A36F3F /* PersonVC.m in Sources */,
 				C0B1F7871B0B53B900A36F3F /* Person.m in Sources */,
 				C0B1F77C1B0B390700A36F3F /* ViewController.m in Sources */,
 				C0B1F7751B0B38D900A36F3F /* Repository.m in Sources */,

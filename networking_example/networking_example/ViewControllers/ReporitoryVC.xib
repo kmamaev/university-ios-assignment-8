@@ -15,7 +15,7 @@
                 <outlet property="fullNameLabel" destination="MSl-3w-2kG" id="dpY-dM-8Rc"/>
                 <outlet property="lastCommitLabel" destination="YBl-Dy-uvb" id="jn2-6g-cPy"/>
                 <outlet property="nameLabel" destination="pln-ol-ub1" id="0AQ-C2-CeX"/>
-                <outlet property="ownerLabel" destination="brj-2J-rY2" id="owY-Sl-pEO"/>
+                <outlet property="ownerButton" destination="6fz-3P-cQm" id="x4y-Ds-LEo"/>
                 <outlet property="privacyLabel" destination="fuo-Dn-SfN" id="43q-4o-TRn"/>
                 <outlet property="urlLabel" destination="6cH-b8-UZH" id="DRi-J8-KEB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -46,12 +46,6 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSl-3w-2kG">
                     <rect key="frame" x="98" y="66" width="494" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brj-2J-rY2">
-                    <rect key="frame" x="98" y="37" width="494" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
@@ -158,6 +152,16 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fz-3P-cQm">
+                    <rect key="frame" x="98" y="33" width="494" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <state key="normal" title="Button">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="ownerButtonDidTap:" destination="-1" eventType="touchUpInside" id="hGD-cY-5eo"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <point key="canvasLocation" x="670" y="332"/>
