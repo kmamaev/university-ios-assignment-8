@@ -3,10 +3,11 @@
 
 
 static NSString *const defaultDateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
+static NSString *const errorDomain = @"MapperDomain";
+static NSInteger const errorCode = 1;
 
 
 @implementation Mapper
-// TODO: implement error handling
 
 - (instancetype)init
 {
@@ -29,10 +30,22 @@ static NSString *const defaultDateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
 
 - (NSObject *)generateObjectOfClass:(Class)classObj byDictionary:(NSDictionary *)dictionary
 {
-    return [self convertValue:dictionary toType:classObj];
+    return [self generateObjectOfClass:classObj byDictionary:dictionary withError:nil];
 }
 
 - (NSArray *)generateObjectsOfClass:(Class)classObj byDictionaries:(NSArray *)dictionaries
+{
+    return [self generateObjectsOfClass:classObj byDictionaries:dictionaries withError:nil];
+}
+
+- (NSObject *)generateObjectOfClass:(Class)classObj byDictionary:(NSDictionary *)dictionary
+    withError:(NSError *__autoreleasing *)error
+{
+    return [self convertValue:dictionary toType:classObj withError:error];
+}
+
+- (NSArray *)generateObjectsOfClass:(Class)classObj byDictionaries:(NSArray *)dictionaries
+    withError:(NSError *__autoreleasing *)error
 {
     NSMutableArray *objects = [[NSMutableArray alloc] init];
     for (NSDictionary *dictionary in dictionaries) {
@@ -43,12 +56,22 @@ static NSString *const defaultDateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
 }
 
 - (NSObject *)convertValue:(NSObject *)value toType:(Class)classObj
+    withError:(NSError *__autoreleasing *)error
 {
     NSDictionary *mappingScheme = self.mappingSchemes[NSStringFromClass(classObj)];
     if (mappingScheme) {
-        assert([value isKindOfClass:[NSDictionary class]]);
+        if (![value isKindOfClass:[NSDictionary class]]) {
+            NSString *errorMessage = [NSString stringWithFormat:
+                @"Error: Expected 'NSDictionary' class but received '%@'", NSStringFromClass([value class])];
+            NSLog(@"%@", errorMessage);
+            if (error) {
+                NSDictionary *const userInfo = @{NSLocalizedDescriptionKey: errorMessage};
+                *error = [[NSError alloc] initWithDomain:errorDomain code:errorCode userInfo:userInfo];
+            }
+            return nil;
+        }
         return [self convertDictionary:(NSDictionary *)value toType:classObj
-            withMappingScheme:mappingScheme];
+            withMappingScheme:mappingScheme error:error];
     }
     else if (classObj == [NSString class]) {
         return (NSString *)value;
@@ -63,20 +86,35 @@ static NSString *const defaultDateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
         return (NSNumber *)value;
     }
     else {
-        NSLog(@"Invalid class object: %@", NSStringFromClass(classObj));
-        assert(false);
+        NSString *errorMessage = [NSString stringWithFormat:@"Error: Invalid class object '%@'",
+            NSStringFromClass(classObj)];
+        NSLog(@"%@", errorMessage);
+        if (error) {
+            NSDictionary *const userInfo = @{NSLocalizedDescriptionKey: errorMessage};
+            *error = [[NSError alloc] initWithDomain:errorDomain code:errorCode userInfo:userInfo];
+        }
         return nil;
     }
 }
 
 - (NSObject *)convertDictionary:(NSDictionary *)dictionary toType:(Class)classObj
-    withMappingScheme:(NSDictionary *)mappingScheme
+    withMappingScheme:(NSDictionary *)mappingScheme error:(NSError *__autoreleasing *)error
 {
     NSObject *object = [[classObj alloc] init];
     
     for (NSString *key in mappingScheme.allKeys) {
         NSString *value = dictionary[mappingScheme[key]];
-        assert(value);
+        
+        if (!value) {
+            NSString *errorMessage = [NSString stringWithFormat:
+                @"Error: Value for key '%@' is not presented in the passed dictionary", key];
+            NSLog(@"%@", errorMessage);
+            if (error) {
+                NSDictionary *const userInfo = @{NSLocalizedDescriptionKey: errorMessage};
+                *error = [[NSError alloc] initWithDomain:errorDomain code:errorCode userInfo:userInfo];
+            }
+            return nil;
+        }
         
         objc_property_t property = class_getProperty(classObj, [key UTF8String]);
         char const *propertyAttrs = property_getAttributes(property);
@@ -99,11 +137,17 @@ static NSString *const defaultDateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
             NSString *typeClassName = [typeAttribute substringWithRange:
                 NSMakeRange(3, typeAttribute.length - 4)];
             Class typeClass = NSClassFromString(typeClassName);
-            [object setValue:[self convertValue:value toType:typeClass] forKey:key];
+            [object setValue:[self convertValue:value toType:typeClass withError:error] forKey:key];
         }
         else {
-            NSLog(@"Error: Unrecognized property type: %@", typeAttribute);
-            assert(false);
+            NSString *errorMessage = [NSString stringWithFormat:
+                @"Error: Unrecognized property type '%@'", typeAttribute];
+            NSLog(@"%@", errorMessage);
+            if (error) {
+                NSDictionary *const userInfo = @{NSLocalizedDescriptionKey: errorMessage};
+                *error = [[NSError alloc] initWithDomain:errorDomain code:errorCode userInfo:userInfo];
+            }
+            return nil;
         }
     }
     
