@@ -5,6 +5,7 @@
 #import "Mapper.h"
 #import "MapperInitializer.h"
 #import "Repository.h"
+#import "Person.h"
 
 
 static NSString *const kRepositoryCommitsCount = @"commits_count";
@@ -158,7 +159,22 @@ static NSString *const kRepositoryCommitsCount = @"commits_count";
 
 - (IBAction)userSearchButtonDidTap:(UIButton *)sender
 {
-    // TODO: implement this
+    [self showActivityModalView];
+
+    typeof(self) __weak wself = self;
+    [self.controller searchUsersByString:self.userNameField.text success:^(NSDictionary *searchResult) {
+            typeof(wself) __strong sself = wself;
+            NSArray *usersDictionaries = searchResult[@"items"];
+            NSArray *users = [sself.mapper generateObjectsOfClass:[Person class]
+                byDictionaries:usersDictionaries];
+            // TODO: implement openning of UsersVC
+            [sself hideActivityModalView];
+        } failure:^(NSError *error) {
+            typeof(wself) __strong sself = wself;
+            NSLog(@"Error: %@", error);
+            [sself hideActivityModalView];
+            [sself showNetworkErrorAlert:error];
+        }];
 }
 
 

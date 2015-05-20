@@ -16,4 +16,7 @@
     success:(void (^)(NSNumber *))success
     failure:(void (^)(NSError *))failure;
 
+- (void)searchUsersByString:(NSString *)searchString success:(void (^)(NSDictionary *))success
+    failure:(void (^)(NSError *))failure;
+
 @end

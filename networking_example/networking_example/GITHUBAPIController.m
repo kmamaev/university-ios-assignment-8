@@ -157,4 +157,27 @@ static NSString *const kBaseAPIURL = @"https://api.github.com";
         }];
 }
 
+- (void)searchUsersByString:(NSString *)searchString success:(void (^)(NSDictionary *))success
+    failure:(void (^)(NSError *))failure
+{
+    NSString *requestString = @"/search/users";
+    NSDictionary *searchParameter = @{@"q": searchString};
+    
+    [self.requestManager
+        GET:requestString
+        parameters:searchParameter
+        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            if (!success) {
+                return;
+            }
+            success(responseObject);
+        }
+        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            if (!failure) {
+                return;
+            }
+            failure(error);
+        }];
+}
+
 @end
