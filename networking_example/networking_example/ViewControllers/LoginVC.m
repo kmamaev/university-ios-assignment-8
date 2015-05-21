@@ -19,7 +19,15 @@
 
 - (IBAction)loginButtonDidTap:(UIButton *)sender
 {
-    // TODO: implement this
+    NSString *username = self.loginTextField.text;
+    NSString *password = self.passwordTextField.text;
+    [self.controller loginWithUsername:username password:password success:^(NSDictionary *response) {
+            NSLog(@"response = %@", response);
+            // TODO: implement this
+        } failure:^(NSError *error) {
+            NSLog(@"error = %@", error.localizedDescription);
+            // TODO: implement this
+        }];
 }
 
 @end

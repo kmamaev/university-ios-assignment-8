@@ -3,6 +3,7 @@
 
 
 static NSString *const kBaseAPIURL = @"https://api.github.com";
+static NSString *const appTokenDescription = @"iOS application";
 
 
 @interface GITHUBAPIController ()
@@ -166,6 +167,33 @@ static NSString *const kBaseAPIURL = @"https://api.github.com";
     [self.requestManager
         GET:requestString
         parameters:searchParameter
+        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            if (!success) {
+                return;
+            }
+            success(responseObject);
+        }
+        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            if (!failure) {
+                return;
+            }
+            failure(error);
+        }];
+}
+
+- (void)loginWithUsername:(NSString *)username password:(NSString *)password
+    success:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure
+{
+    NSString *requestString = @"/authorizations";
+    
+    NSDictionary *requestParameter = @{@"note": appTokenDescription};
+    
+    [self.requestManager.requestSerializer setAuthorizationHeaderFieldWithUsername:username
+        password:password];
+    
+    [self.requestManager
+        POST:requestString
+        parameters:requestParameter
         success:^(AFHTTPRequestOperation *operation, id responseObject) {
             if (!success) {
                 return;

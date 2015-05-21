@@ -19,4 +19,7 @@
 - (void)searchUsersByString:(NSString *)searchString success:(void (^)(NSDictionary *))success
     failure:(void (^)(NSError *))failure;
 
+- (void)loginWithUsername:(NSString *)username password:(NSString *)password
+    success:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure;
+
 @end
