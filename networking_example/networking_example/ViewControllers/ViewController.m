@@ -7,15 +7,21 @@
 #import "Repository.h"
 #import "User.h"
 #import "UsersVC.h"
+#import "LoginVC.h"
 #import "RepositoriesHelper.h"
 #import "UIViewController+ActivityModalView.h"
 #import "AlertUtils.h"
 
 
+static NSString *const defaultUserNameText = @"not logged in";
+
+
 @interface ViewController () <UITextFieldDelegate>
 @property (strong, nonatomic) GITHUBAPIController *controller;
 @property (strong, nonatomic) IBOutlet UITextField *userNameField;
+@property (strong, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (strong, nonatomic) Mapper *mapper;
+@property (copy, nonatomic) NSString *userName;
 @end
 
 
@@ -29,6 +35,9 @@
     // Initialize mapper with mapping schemes
     self.mapper = [[Mapper alloc] init];
     [MapperInitializer initializeMappingSchemesForMapper:self.mapper];
+    
+    // Initialize username's label
+    self.userNameLabel.text = self.userName ? self.userName : defaultUserNameText;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -107,6 +116,12 @@
             [sself hideActivityModalView];
             showInfoAlert(@"Unable to receive data", error.localizedDescription, sself);
         }];
+}
+
+- (IBAction)loginButtonDidTap:(UIButton *)sender
+{
+    LoginVC *loginVC = [[LoginVC alloc] init];
+    [self presentViewController:loginVC animated:YES completion:nil];
 }
 
 @end

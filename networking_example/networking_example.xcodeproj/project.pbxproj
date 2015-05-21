@@ -36,6 +36,8 @@
 		C0B1F7941B0CC49500A36F3F /* RepositoriesHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F7931B0CC49500A36F3F /* RepositoriesHelper.m */; };
 		C0B1F7971B0CC64400A36F3F /* UIViewController+ActivityModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F7961B0CC64400A36F3F /* UIViewController+ActivityModalView.m */; };
 		C0B1F79A1B0CCF0800A36F3F /* AlertUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F7991B0CCF0800A36F3F /* AlertUtils.m */; };
+		C0B1F79E1B0DCDDB00A36F3F /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F79C1B0DCDDB00A36F3F /* LoginVC.m */; };
+		C0B1F79F1B0DCDDB00A36F3F /* LoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0B1F79D1B0DCDDB00A36F3F /* LoginVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +98,9 @@
 		C0B1F7961B0CC64400A36F3F /* UIViewController+ActivityModalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ActivityModalView.m"; sourceTree = "<group>"; };
 		C0B1F7981B0CCF0800A36F3F /* AlertUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertUtils.h; sourceTree = "<group>"; };
 		C0B1F7991B0CCF0800A36F3F /* AlertUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertUtils.m; sourceTree = "<group>"; };
+		C0B1F79B1B0DCDDB00A36F3F /* LoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
+		C0B1F79C1B0DCDDB00A36F3F /* LoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
+		C0B1F79D1B0DCDDB00A36F3F /* LoginVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginVC.xib; sourceTree = "<group>"; };
 		D2BDAC4868FC2024E8988028 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -246,6 +251,9 @@
 				C0B1F78A1B0C550800A36F3F /* UserVC.xib */,
 				C0B1F78D1B0CB13200A36F3F /* UsersVC.h */,
 				C0B1F78E1B0CB13200A36F3F /* UsersVC.m */,
+				C0B1F79B1B0DCDDB00A36F3F /* LoginVC.h */,
+				C0B1F79C1B0DCDDB00A36F3F /* LoginVC.m */,
+				C0B1F79D1B0DCDDB00A36F3F /* LoginVC.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -328,6 +336,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0B1F79F1B0DCDDB00A36F3F /* LoginVC.xib in Resources */,
 				AEB73B4A18E9979F0021BCCD /* Images.xcassets in Resources */,
 				C0B1F7841B0B39F400A36F3F /* ReporitoryVC.xib in Resources */,
 				AEB73B3C18E9979F0021BCCD /* InfoPlist.strings in Resources */,
@@ -390,6 +399,7 @@
 				C0B1F78B1B0C550800A36F3F /* UserVC.m in Sources */,
 				C0B1F7871B0B53B900A36F3F /* User.m in Sources */,
 				C0B1F77C1B0B390700A36F3F /* ViewController.m in Sources */,
+				C0B1F79E1B0DCDDB00A36F3F /* LoginVC.m in Sources */,
 				C0B1F7751B0B38D900A36F3F /* Repository.m in Sources */,
 				AEB73B6818E99BEB0021BCCD /* GITHUBAPIController.m in Sources */,
 				C0B1F7901B0CB13200A36F3F /* UsersVC.m in Sources */,
