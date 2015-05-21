@@ -21,7 +21,6 @@
 		AEB73B5318E9979F0021BCCD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEB73B3518E9979F0021BCCD /* UIKit.framework */; };
 		AEB73B5B18E9979F0021BCCD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AEB73B5918E9979F0021BCCD /* InfoPlist.strings */; };
 		AEB73B5D18E9979F0021BCCD /* networking_exampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AEB73B5C18E9979F0021BCCD /* networking_exampleTests.m */; };
-		AEB73B6818E99BEB0021BCCD /* GITHUBAPIController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEB73B6718E99BEB0021BCCD /* GITHUBAPIController.m */; };
 		C0B1F7671B09FC3200A36F3F /* Mapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F7661B09FC3200A36F3F /* Mapper.m */; };
 		C0B1F76A1B0A114C00A36F3F /* MapperInitializer.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F7691B0A114C00A36F3F /* MapperInitializer.m */; };
 		C0B1F7751B0B38D900A36F3F /* Repository.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F7741B0B38D900A36F3F /* Repository.m */; };
@@ -38,6 +37,7 @@
 		C0B1F79A1B0CCF0800A36F3F /* AlertUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F7991B0CCF0800A36F3F /* AlertUtils.m */; };
 		C0B1F79E1B0DCDDB00A36F3F /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F79C1B0DCDDB00A36F3F /* LoginVC.m */; };
 		C0B1F79F1B0DCDDB00A36F3F /* LoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0B1F79D1B0DCDDB00A36F3F /* LoginVC.xib */; };
+		C0B1F7A31B0DE6B700A36F3F /* GITHUBAPIController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F7A21B0DE6B700A36F3F /* GITHUBAPIController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,8 +70,6 @@
 		AEB73B5818E9979F0021BCCD /* networking_exampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "networking_exampleTests-Info.plist"; sourceTree = "<group>"; };
 		AEB73B5A18E9979F0021BCCD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AEB73B5C18E9979F0021BCCD /* networking_exampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = networking_exampleTests.m; sourceTree = "<group>"; };
-		AEB73B6618E99BEB0021BCCD /* GITHUBAPIController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GITHUBAPIController.h; sourceTree = "<group>"; };
-		AEB73B6718E99BEB0021BCCD /* GITHUBAPIController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GITHUBAPIController.m; sourceTree = "<group>"; };
 		C0B1F7651B09FC3200A36F3F /* Mapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mapper.h; sourceTree = "<group>"; };
 		C0B1F7661B09FC3200A36F3F /* Mapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mapper.m; sourceTree = "<group>"; };
 		C0B1F7681B0A114C00A36F3F /* MapperInitializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapperInitializer.h; sourceTree = "<group>"; };
@@ -101,6 +99,8 @@
 		C0B1F79B1B0DCDDB00A36F3F /* LoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
 		C0B1F79C1B0DCDDB00A36F3F /* LoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
 		C0B1F79D1B0DCDDB00A36F3F /* LoginVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginVC.xib; sourceTree = "<group>"; };
+		C0B1F7A11B0DE6B700A36F3F /* GITHUBAPIController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GITHUBAPIController.h; sourceTree = "<group>"; };
+		C0B1F7A21B0DE6B700A36F3F /* GITHUBAPIController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GITHUBAPIController.m; sourceTree = "<group>"; };
 		D2BDAC4868FC2024E8988028 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -175,6 +175,7 @@
 			children = (
 				C0B1F7761B0B390700A36F3F /* ViewControllers */,
 				C0B1F7721B0B38D900A36F3F /* Models */,
+				C0B1F7A01B0DE6B700A36F3F /* Controllers */,
 				AEB73B4018E9979F0021BCCD /* AppDelegate.h */,
 				AEB73B4118E9979F0021BCCD /* AppDelegate.m */,
 				C0B1F7651B09FC3200A36F3F /* Mapper.h */,
@@ -188,8 +189,6 @@
 				C0B1F7961B0CC64400A36F3F /* UIViewController+ActivityModalView.m */,
 				C0B1F7981B0CCF0800A36F3F /* AlertUtils.h */,
 				C0B1F7991B0CCF0800A36F3F /* AlertUtils.m */,
-				AEB73B6618E99BEB0021BCCD /* GITHUBAPIController.h */,
-				AEB73B6718E99BEB0021BCCD /* GITHUBAPIController.m */,
 				AEB73B4918E9979F0021BCCD /* Images.xcassets */,
 				AEB73B3818E9979F0021BCCD /* Supporting Files */,
 			);
@@ -256,6 +255,15 @@
 				C0B1F79D1B0DCDDB00A36F3F /* LoginVC.xib */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C0B1F7A01B0DE6B700A36F3F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C0B1F7A11B0DE6B700A36F3F /* GITHUBAPIController.h */,
+				C0B1F7A21B0DE6B700A36F3F /* GITHUBAPIController.m */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -394,6 +402,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0B1F77B1B0B390700A36F3F /* RepositoriesListVC.m in Sources */,
+				C0B1F7A31B0DE6B700A36F3F /* GITHUBAPIController.m in Sources */,
 				C0B1F7671B09FC3200A36F3F /* Mapper.m in Sources */,
 				C0B1F7971B0CC64400A36F3F /* UIViewController+ActivityModalView.m in Sources */,
 				C0B1F78B1B0C550800A36F3F /* UserVC.m in Sources */,
@@ -401,7 +410,6 @@
 				C0B1F77C1B0B390700A36F3F /* ViewController.m in Sources */,
 				C0B1F79E1B0DCDDB00A36F3F /* LoginVC.m in Sources */,
 				C0B1F7751B0B38D900A36F3F /* Repository.m in Sources */,
-				AEB73B6818E99BEB0021BCCD /* GITHUBAPIController.m in Sources */,
 				C0B1F7901B0CB13200A36F3F /* UsersVC.m in Sources */,
 				AEB73B4218E9979F0021BCCD /* AppDelegate.m in Sources */,
 				AEB73B3E18E9979F0021BCCD /* main.m in Sources */,
