@@ -1,7 +1,6 @@
 #import "UserVC.h"
 #import "User.h"
 #import "RepositoriesHelper.h"
-#import "UIViewController+ActivityModalView.h"
 #import "GITHUBAPIController.h"
 #import "Repository.h"
 #import "RepositoriesListVC.h"

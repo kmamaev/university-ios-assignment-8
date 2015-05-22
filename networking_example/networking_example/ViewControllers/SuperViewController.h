@@ -1,7 +1,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface UIViewController (ActivityModalView)
+@interface SuperViewController : UIViewController
 @property (strong, nonatomic) UIView *grayView;
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 - (void)showActivityModalView;

@@ -33,12 +33,12 @@
 		C0B1F78C1B0C550800A36F3F /* UserVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0B1F78A1B0C550800A36F3F /* UserVC.xib */; };
 		C0B1F7901B0CB13200A36F3F /* UsersVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F78E1B0CB13200A36F3F /* UsersVC.m */; };
 		C0B1F7941B0CC49500A36F3F /* RepositoriesHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F7931B0CC49500A36F3F /* RepositoriesHelper.m */; };
-		C0B1F7971B0CC64400A36F3F /* UIViewController+ActivityModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F7961B0CC64400A36F3F /* UIViewController+ActivityModalView.m */; };
 		C0B1F79A1B0CCF0800A36F3F /* AlertUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F7991B0CCF0800A36F3F /* AlertUtils.m */; };
 		C0B1F79E1B0DCDDB00A36F3F /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F79C1B0DCDDB00A36F3F /* LoginVC.m */; };
 		C0B1F79F1B0DCDDB00A36F3F /* LoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0B1F79D1B0DCDDB00A36F3F /* LoginVC.xib */; };
 		C0B1F7A31B0DE6B700A36F3F /* GITHUBAPIController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F7A21B0DE6B700A36F3F /* GITHUBAPIController.m */; };
 		C0B1F7A61B0DE71200A36F3F /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F7A51B0DE71200A36F3F /* LoginController.m */; };
+		C0B1F7A91B0F1CB800A36F3F /* SuperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F7A81B0F1CB800A36F3F /* SuperViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,8 +93,6 @@
 		C0B1F78E1B0CB13200A36F3F /* UsersVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersVC.m; sourceTree = "<group>"; };
 		C0B1F7921B0CC49500A36F3F /* RepositoriesHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepositoriesHelper.h; sourceTree = "<group>"; };
 		C0B1F7931B0CC49500A36F3F /* RepositoriesHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepositoriesHelper.m; sourceTree = "<group>"; };
-		C0B1F7951B0CC64400A36F3F /* UIViewController+ActivityModalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ActivityModalView.h"; sourceTree = "<group>"; };
-		C0B1F7961B0CC64400A36F3F /* UIViewController+ActivityModalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ActivityModalView.m"; sourceTree = "<group>"; };
 		C0B1F7981B0CCF0800A36F3F /* AlertUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertUtils.h; sourceTree = "<group>"; };
 		C0B1F7991B0CCF0800A36F3F /* AlertUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertUtils.m; sourceTree = "<group>"; };
 		C0B1F79B1B0DCDDB00A36F3F /* LoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
@@ -104,6 +102,8 @@
 		C0B1F7A21B0DE6B700A36F3F /* GITHUBAPIController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GITHUBAPIController.m; sourceTree = "<group>"; };
 		C0B1F7A41B0DE71200A36F3F /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
 		C0B1F7A51B0DE71200A36F3F /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
+		C0B1F7A71B0F1CB800A36F3F /* SuperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperViewController.h; sourceTree = "<group>"; };
+		C0B1F7A81B0F1CB800A36F3F /* SuperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperViewController.m; sourceTree = "<group>"; };
 		D2BDAC4868FC2024E8988028 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -188,8 +188,6 @@
 				C0B1F7691B0A114C00A36F3F /* MapperInitializer.m */,
 				C0B1F7921B0CC49500A36F3F /* RepositoriesHelper.h */,
 				C0B1F7931B0CC49500A36F3F /* RepositoriesHelper.m */,
-				C0B1F7951B0CC64400A36F3F /* UIViewController+ActivityModalView.h */,
-				C0B1F7961B0CC64400A36F3F /* UIViewController+ActivityModalView.m */,
 				C0B1F7981B0CCF0800A36F3F /* AlertUtils.h */,
 				C0B1F7991B0CCF0800A36F3F /* AlertUtils.m */,
 				AEB73B4918E9979F0021BCCD /* Images.xcassets */,
@@ -241,6 +239,8 @@
 		C0B1F7761B0B390700A36F3F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				C0B1F7A71B0F1CB800A36F3F /* SuperViewController.h */,
+				C0B1F7A81B0F1CB800A36F3F /* SuperViewController.m */,
 				C0B1F7771B0B390700A36F3F /* RepositoriesListVC.h */,
 				C0B1F7781B0B390700A36F3F /* RepositoriesListVC.m */,
 				C0B1F7791B0B390700A36F3F /* ViewController.h */,
@@ -409,7 +409,6 @@
 				C0B1F77B1B0B390700A36F3F /* RepositoriesListVC.m in Sources */,
 				C0B1F7A31B0DE6B700A36F3F /* GITHUBAPIController.m in Sources */,
 				C0B1F7671B09FC3200A36F3F /* Mapper.m in Sources */,
-				C0B1F7971B0CC64400A36F3F /* UIViewController+ActivityModalView.m in Sources */,
 				C0B1F7A61B0DE71200A36F3F /* LoginController.m in Sources */,
 				C0B1F78B1B0C550800A36F3F /* UserVC.m in Sources */,
 				C0B1F7871B0B53B900A36F3F /* User.m in Sources */,
@@ -420,6 +419,7 @@
 				AEB73B4218E9979F0021BCCD /* AppDelegate.m in Sources */,
 				AEB73B3E18E9979F0021BCCD /* main.m in Sources */,
 				C0B1F7831B0B39F400A36F3F /* ReporitoryVC.m in Sources */,
+				C0B1F7A91B0F1CB800A36F3F /* SuperViewController.m in Sources */,
 				C0B1F79A1B0CCF0800A36F3F /* AlertUtils.m in Sources */,
 				C0B1F7941B0CC49500A36F3F /* RepositoriesHelper.m in Sources */,
 				C0B1F76A1B0A114C00A36F3F /* MapperInitializer.m in Sources */,

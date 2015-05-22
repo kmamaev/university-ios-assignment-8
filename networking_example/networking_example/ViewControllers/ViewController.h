@@ -1,6 +1,5 @@
-#import <UIKit/UIKit.h>
-#import "LoginVC.h"
+#import "SuperViewController.h"
 
 
-@interface ViewController : UIViewController
+@interface ViewController : SuperViewController
 @end
