@@ -31,6 +31,8 @@ static NSString *const logoutButtonTitle = @"Log Out";
 
 @implementation ViewController
 
+#pragma mark - ViewController's lifecycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -47,6 +49,8 @@ static NSString *const logoutButtonTitle = @"Log Out";
     [self updateLoginButtonTitle];
 }
 
+#pragma mark - Auxiliaries
+
 - (void)updateLoginButtonTitle
 {
     NSString *neededLoginButtonTitle = self.userName ? logoutButtonTitle : loginButtonTitle;
@@ -60,6 +64,8 @@ static NSString *const logoutButtonTitle = @"Log Out";
     }
     return NO;
 }
+
+#pragma mark - Actions
 
 - (IBAction)buttonTapped:(UIButton *)sender
 {
