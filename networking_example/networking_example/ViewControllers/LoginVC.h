@@ -1,4 +1,4 @@
-#import <UIKit/UIKit.h>
+#import "SuperViewController.h"
 
 
 @protocol LoginVCDelegate <NSObject>
@@ -6,6 +6,6 @@
 @end
 
 
-@interface LoginVC : UIViewController
+@interface LoginVC : SuperViewController
 @property (nonatomic, weak) id<LoginVCDelegate> delegate;
 @end

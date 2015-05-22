@@ -22,6 +22,7 @@
 
 - (IBAction)loginButtonDidTap:(UIButton *)sender
 {
+    [self showActivityModalView];
     NSString *username = self.loginTextField.text;
     NSString *password = self.passwordTextField.text;
     typeof(self) __weak wself = self;
@@ -29,9 +30,11 @@
     [loginController loginWithUsername:username password:password
         success:^{
             NSLog(@"Login succeded.");
+            [self hideActivityModalView];
             [wself.delegate loginVCDelegateDidFinishLoginWithUsername:username];
         }
         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [self hideActivityModalView];
             if (operation.response.statusCode == 401) { // unauthorized
                 showInfoAlert(@"Login Failed", @"Username or password is incorrect.", self);
             }
