@@ -5,6 +5,9 @@
 
 
 @interface GITHUBAPIController : NSObject
+
+@property (nonatomic, copy) NSString *token;
+
 + (instancetype)sharedController;
 
 - (void)getAvatarForUser:(NSString *)userName

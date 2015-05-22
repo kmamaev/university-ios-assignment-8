@@ -42,8 +42,7 @@
         success:^(NSDictionary *response) {
             typeof(wself) __strong sself = wself;
             NSLog(@"response = %@", response);
-            sself.token = response[@"token"];
-            sself.username = username;
+            sself.githubAPIController.token = response[@"token"];
             if (!success) {
                 return;
             }
@@ -58,8 +57,7 @@
 
 - (void)logout
 {
-    self.username = nil;
-    self.token = nil;
+    self.githubAPIController.token = nil;
     [self.githubAPIController invalidateCredantials];
 }
 

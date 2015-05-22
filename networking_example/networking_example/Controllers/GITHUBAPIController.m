@@ -48,7 +48,7 @@ static NSString *const appTokenDescription = @"iOS application";
         stringWithFormat:@"users/%@", userName];
     
     [self.requestManager
-        GET:requestString
+        GET:[self authorizedRequestStringByString:requestString]
         parameters:nil
         success:^(AFHTTPRequestOperation *operation, id responseObject) {
             if (!success) {
@@ -72,7 +72,7 @@ static NSString *const appTokenDescription = @"iOS application";
     NSString *requestString = [NSString stringWithFormat:@"repos/%@/commits", repositoryFullName];
     
     [self.requestManager
-        GET:requestString
+        GET:[self authorizedRequestStringByString:requestString]
         parameters:nil
         success:^(AFHTTPRequestOperation *operation, id responseObject) {
             if (!success) {
@@ -118,7 +118,7 @@ static NSString *const appTokenDescription = @"iOS application";
     NSString *requestString = [NSString stringWithFormat:@"users/%@/repos", userName];
     
     [self.requestManager
-        GET:requestString
+        GET:[self authorizedRequestStringByString:requestString]
         parameters:nil
         success:^(AFHTTPRequestOperation *operation, id responseObject) {
             if (!success) {
@@ -165,7 +165,7 @@ static NSString *const appTokenDescription = @"iOS application";
     NSDictionary *searchParameter = @{@"q": searchString};
     
     [self.requestManager
-        GET:requestString
+        GET:[self authorizedRequestStringByString:requestString]
         parameters:searchParameter
         success:^(AFHTTPRequestOperation *operation, id responseObject) {
             if (!success) {
@@ -199,16 +199,17 @@ static NSString *const appTokenDescription = @"iOS application";
         POST:requestString
         parameters:requestParameter
         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [self invalidateCredantials];
             if (!success) {
                 return;
             }
             success(responseObject);
         }
         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [self invalidateCredantials];
             if (!failure) {
                 return;
             }
-            [self.requestManager.requestSerializer clearAuthorizationHeader];
             failure(operation, error);
         }];
 }
@@ -216,6 +217,18 @@ static NSString *const appTokenDescription = @"iOS application";
 - (void)invalidateCredantials
 {
     [self.requestManager.requestSerializer clearAuthorizationHeader];
+}
+
+#pragma mark - Auxiliaries
+
+- (NSString *)authorizedRequestStringByString:(NSString *)requesString
+{
+    if (self.token) {
+        return [NSString stringWithFormat:@"%@?access_token=%@", requesString, self.token];
+    }
+    else {
+        return requesString;
+    }
 }
 
 @end
