@@ -26,4 +26,5 @@
     success:(void (^)(NSDictionary *))success
     failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
+- (void)invalidateCredantials;
 @end

@@ -10,6 +10,7 @@
 #import "LoginVC.h"
 #import "RepositoriesHelper.h"
 #import "AlertUtils.h"
+#import "LoginController.h"
 
 
 static NSString *const defaultUserNameText = @"not logged in";
@@ -40,7 +41,7 @@ static NSString *const logoutButtonTitle = @"Log Out";
     [MapperInitializer initializeMappingSchemesForMapper:self.mapper];
     
     // Initialize username's label
-    self.userNameLabel.text = self.userName ? self.userName : defaultUserNameText;
+    [self setUserName:nil];
     
     // Initialize "log in/log out" button
     [self updateLoginButtonTitle];
@@ -132,11 +133,18 @@ static NSString *const logoutButtonTitle = @"Log Out";
 
 - (IBAction)loginButtonDidTap:(UIButton *)sender
 {
-    self.loginVC = [[LoginVC alloc] init];
-    self.loginVC.delegate = self;
-    [self presentViewController:self.loginVC animated:YES completion:nil];
-    
-    // TODO: handle log out button tapping
+    if (self.userName) { // 'Log Out' button is tapped actually
+        LoginController *loginController = [LoginController sharedInstance];
+        [loginController logout];
+        self.userName = nil;
+        [self updateLoginButtonTitle];
+        showInfoAlert(@"Logged Out", @"You are successfully logged out.", self);
+    }
+    else { // 'Log In' button is tapped actually
+        self.loginVC = [[LoginVC alloc] init];
+        self.loginVC.delegate = self;
+        [self presentViewController:self.loginVC animated:YES completion:nil];
+    }
 }
 
 #pragma mark - LoginVCDelegate implementation
@@ -145,10 +153,15 @@ static NSString *const logoutButtonTitle = @"Log Out";
 {
     [self.loginVC dismissViewControllerAnimated:YES completion:nil];
     self.userName = username;
-    if (self.userName) {
-        self.userNameLabel.text = self.userName;
-    }
     [self updateLoginButtonTitle];
+}
+
+#pragma mark - Getters and setters
+
+- (void)setUserName:(NSString *)userName
+{
+    _userName = userName;
+    self.userNameLabel.text = userName ? userName : defaultUserNameText;
 }
 
 @end

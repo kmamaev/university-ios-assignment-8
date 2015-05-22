@@ -213,4 +213,9 @@ static NSString *const appTokenDescription = @"iOS application";
         }];
 }
 
+- (void)invalidateCredantials
+{
+    [self.requestManager.requestSerializer clearAuthorizationHeader];
+}
+
 @end

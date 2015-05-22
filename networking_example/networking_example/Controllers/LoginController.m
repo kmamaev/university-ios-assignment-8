@@ -56,4 +56,11 @@
         }];
 }
 
+- (void)logout
+{
+    self.username = nil;
+    self.token = nil;
+    [self.githubAPIController invalidateCredantials];
+}
+
 @end
