@@ -36,17 +36,20 @@ static NSString *const logoutButtonTitle = @"Log Out";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.controller = [GITHUBAPIController sharedController];
+    _controller = [GITHUBAPIController sharedController];
     
     // Initialize mapper with mapping schemes
     self.mapper = [[Mapper alloc] init];
     [MapperInitializer initializeMappingSchemesForMapper:self.mapper];
     
     // Initialize username's label
-    [self setUserName:nil];
+    [self setUserName:[LoginController sharedInstance].username];
     
     // Initialize "log in/log out" button
     [self updateLoginButtonTitle];
+    
+    // Set Up token
+    [[LoginController sharedInstance] setUpToken];
 }
 
 #pragma mark - Auxiliaries
