@@ -42,4 +42,9 @@
         }];
 }
 
+- (IBAction)cancelButtonDidTap:(UIButton *)sender
+{
+    [self.delegate loginVCDelegateDidFinishLoginWithUsername:nil];
+}
+
 @end

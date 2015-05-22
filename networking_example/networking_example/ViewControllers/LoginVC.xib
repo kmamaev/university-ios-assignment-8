@@ -35,7 +35,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7jC-FD-y1t">
-                    <rect key="frame" x="281" y="411" width="38" height="30"/>
+                    <rect key="frame" x="554" y="411" width="38" height="30"/>
                     <state key="normal" title="Login">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -48,6 +48,15 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vzz-Gt-9HX">
+                    <rect key="frame" x="8" y="411" width="48" height="30"/>
+                    <state key="normal" title="Cancel">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="cancelButtonDidTap:" destination="-1" eventType="touchUpInside" id="JBG-jF-APu"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -55,15 +64,17 @@
                 <constraint firstItem="k4c-tO-OAs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="2EQ-Ip-Zgc"/>
                 <constraint firstItem="KPe-k0-HlE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="6Bh-CO-MWk"/>
                 <constraint firstItem="KPe-k0-HlE" firstAttribute="top" secondItem="k4c-tO-OAs" secondAttribute="bottom" constant="40" id="CeU-iK-dlo"/>
-                <constraint firstAttribute="centerX" secondItem="7jC-FD-y1t" secondAttribute="centerX" id="IZB-rE-Iqa"/>
                 <constraint firstAttribute="trailing" secondItem="SfQ-bh-RpP" secondAttribute="trailing" constant="8" id="IgN-w7-N41"/>
                 <constraint firstAttribute="trailing" secondItem="D9K-Sx-SYb" secondAttribute="trailing" constant="8" id="NJp-VJ-gdO"/>
                 <constraint firstItem="D9K-Sx-SYb" firstAttribute="centerY" secondItem="k4c-tO-OAs" secondAttribute="centerY" constant="0.5" id="PQi-ZD-Yko"/>
                 <constraint firstAttribute="centerY" secondItem="KPe-k0-HlE" secondAttribute="centerY" id="Vgw-gI-472"/>
                 <constraint firstItem="SfQ-bh-RpP" firstAttribute="leading" secondItem="KPe-k0-HlE" secondAttribute="trailing" constant="8" id="WIm-eS-2aM"/>
                 <constraint firstItem="7jC-FD-y1t" firstAttribute="top" secondItem="KPe-k0-HlE" secondAttribute="bottom" constant="100" id="bLT-TR-gGX"/>
+                <constraint firstItem="Vzz-Gt-9HX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="c0G-Lx-N1y"/>
+                <constraint firstItem="Vzz-Gt-9HX" firstAttribute="centerY" secondItem="7jC-FD-y1t" secondAttribute="centerY" id="g2V-BL-joq"/>
                 <constraint firstItem="D9K-Sx-SYb" firstAttribute="leading" secondItem="k4c-tO-OAs" secondAttribute="trailing" constant="8" id="hvP-EO-jZ1"/>
                 <constraint firstItem="k4c-tO-OAs" firstAttribute="width" secondItem="KPe-k0-HlE" secondAttribute="width" id="mQ9-d4-yoV"/>
+                <constraint firstAttribute="trailing" secondItem="7jC-FD-y1t" secondAttribute="trailing" constant="8" id="tz8-Qd-sRh"/>
             </constraints>
         </view>
     </objects>
