@@ -1,6 +1,9 @@
 #import <Foundation/Foundation.h>
 
 
+@class AFHTTPRequestOperation;
+
+
 @interface GITHUBAPIController : NSObject
 + (instancetype)sharedController;
 
@@ -20,6 +23,7 @@
     failure:(void (^)(NSError *))failure;
 
 - (void)loginWithUsername:(NSString *)username password:(NSString *)password
-    success:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure;
+    success:(void (^)(NSDictionary *))success
+    failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
 @end

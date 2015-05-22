@@ -182,11 +182,15 @@ static NSString *const appTokenDescription = @"iOS application";
 }
 
 - (void)loginWithUsername:(NSString *)username password:(NSString *)password
-    success:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure
+    success:(void (^)(NSDictionary *))success
+    failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
     NSString *requestString = @"/authorizations";
     
-    NSDictionary *requestParameter = @{@"note": appTokenDescription};
+    NSString *uniqueAppTokenDescription = [appTokenDescription
+        stringByAppendingString:[NSUUID UUID].UUIDString];
+    
+    NSDictionary *requestParameter = @{@"note": uniqueAppTokenDescription};
     
     [self.requestManager.requestSerializer setAuthorizationHeaderFieldWithUsername:username
         password:password];
@@ -204,7 +208,8 @@ static NSString *const appTokenDescription = @"iOS application";
             if (!failure) {
                 return;
             }
-            failure(error);
+            [self.requestManager.requestSerializer clearAuthorizationHeader];
+            failure(operation, error);
         }];
 }
 

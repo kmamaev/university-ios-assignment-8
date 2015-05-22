@@ -1,5 +1,8 @@
 #import "LoginVC.h"
 #import "GITHUBAPIController.h"
+#import "LoginController.h"
+#import "AlertUtils.h"
+#import "AFHTTPRequestOperation.h"
 
 
 @interface LoginVC ()
@@ -21,12 +24,21 @@
 {
     NSString *username = self.loginTextField.text;
     NSString *password = self.passwordTextField.text;
-    [self.controller loginWithUsername:username password:password success:^(NSDictionary *response) {
-            NSLog(@"response = %@", response);
-            // TODO: implement this
-        } failure:^(NSError *error) {
-            NSLog(@"error = %@", error.localizedDescription);
-            // TODO: implement this
+    typeof(self) __weak wself = self;
+    LoginController *loginController = [LoginController sharedInstance];
+    [loginController loginWithUsername:username password:password
+        success:^{
+            NSLog(@"Login succeded.");
+            [wself.delegate loginVCDelegateDidFinishLoginWithUsername:username];
+        }
+        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            if (operation.response.statusCode == 401) { // unauthorized
+                showInfoAlert(@"Login Failed", @"Username or password is incorrect.", self);
+            }
+            else {
+                NSLog(@"Error: %@", error.localizedDescription);
+                showInfoAlert(@"Login Failed", error.localizedDescription, self);
+            }
         }];
 }
 

@@ -38,6 +38,7 @@
 		C0B1F79E1B0DCDDB00A36F3F /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F79C1B0DCDDB00A36F3F /* LoginVC.m */; };
 		C0B1F79F1B0DCDDB00A36F3F /* LoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0B1F79D1B0DCDDB00A36F3F /* LoginVC.xib */; };
 		C0B1F7A31B0DE6B700A36F3F /* GITHUBAPIController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F7A21B0DE6B700A36F3F /* GITHUBAPIController.m */; };
+		C0B1F7A61B0DE71200A36F3F /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B1F7A51B0DE71200A36F3F /* LoginController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,8 @@
 		C0B1F79D1B0DCDDB00A36F3F /* LoginVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginVC.xib; sourceTree = "<group>"; };
 		C0B1F7A11B0DE6B700A36F3F /* GITHUBAPIController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GITHUBAPIController.h; sourceTree = "<group>"; };
 		C0B1F7A21B0DE6B700A36F3F /* GITHUBAPIController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GITHUBAPIController.m; sourceTree = "<group>"; };
+		C0B1F7A41B0DE71200A36F3F /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
+		C0B1F7A51B0DE71200A36F3F /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
 		D2BDAC4868FC2024E8988028 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -262,6 +265,8 @@
 			children = (
 				C0B1F7A11B0DE6B700A36F3F /* GITHUBAPIController.h */,
 				C0B1F7A21B0DE6B700A36F3F /* GITHUBAPIController.m */,
+				C0B1F7A41B0DE71200A36F3F /* LoginController.h */,
+				C0B1F7A51B0DE71200A36F3F /* LoginController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -405,6 +410,7 @@
 				C0B1F7A31B0DE6B700A36F3F /* GITHUBAPIController.m in Sources */,
 				C0B1F7671B09FC3200A36F3F /* Mapper.m in Sources */,
 				C0B1F7971B0CC64400A36F3F /* UIViewController+ActivityModalView.m in Sources */,
+				C0B1F7A61B0DE71200A36F3F /* LoginController.m in Sources */,
 				C0B1F78B1B0C550800A36F3F /* UserVC.m in Sources */,
 				C0B1F7871B0B53B900A36F3F /* User.m in Sources */,
 				C0B1F77C1B0B390700A36F3F /* ViewController.m in Sources */,

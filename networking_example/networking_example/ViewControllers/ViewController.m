@@ -14,14 +14,18 @@
 
 
 static NSString *const defaultUserNameText = @"not logged in";
+static NSString *const loginButtonTitle = @"Log In";
+static NSString *const logoutButtonTitle = @"Log Out";
 
 
-@interface ViewController () <UITextFieldDelegate>
+@interface ViewController () <UITextFieldDelegate, LoginVCDelegate>
 @property (strong, nonatomic) GITHUBAPIController *controller;
 @property (strong, nonatomic) IBOutlet UITextField *userNameField;
 @property (strong, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (strong, nonatomic) IBOutlet UIButton *loginButton;
 @property (strong, nonatomic) Mapper *mapper;
 @property (copy, nonatomic) NSString *userName;
+@property (strong, nonatomic) LoginVC *loginVC;
 @end
 
 
@@ -38,6 +42,15 @@ static NSString *const defaultUserNameText = @"not logged in";
     
     // Initialize username's label
     self.userNameLabel.text = self.userName ? self.userName : defaultUserNameText;
+    
+    // Initialize "log in/log out" button
+    [self updateLoginButtonTitle];
+}
+
+- (void)updateLoginButtonTitle
+{
+    NSString *neededLoginButtonTitle = self.userName ? logoutButtonTitle : loginButtonTitle;
+    [self.loginButton setTitle:neededLoginButtonTitle forState:UIControlStateNormal];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -120,8 +133,23 @@ static NSString *const defaultUserNameText = @"not logged in";
 
 - (IBAction)loginButtonDidTap:(UIButton *)sender
 {
-    LoginVC *loginVC = [[LoginVC alloc] init];
-    [self presentViewController:loginVC animated:YES completion:nil];
+    self.loginVC = [[LoginVC alloc] init];
+    self.loginVC.delegate = self;
+    [self presentViewController:self.loginVC animated:YES completion:nil];
+    
+    // TODO: handle log out button tapping
+}
+
+#pragma mark - LoginVCDelegate implementation
+
+- (void)loginVCDelegateDidFinishLoginWithUsername:(NSString *)username
+{
+    [self.loginVC dismissViewControllerAnimated:YES completion:nil];
+    self.userName = username;
+    if (self.userName) {
+        self.userNameLabel.text = self.userName;
+    }
+    [self updateLoginButtonTitle];
 }
 
 @end
